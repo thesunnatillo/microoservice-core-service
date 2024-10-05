@@ -4,6 +4,8 @@ import { GrpcMethod } from '@nestjs/microservices';
 import {
   CreateCourseDto,
   DeleteCourseDto,
+  GetAllDto,
+  GetByIdDto,
   UpdateCourseDto,
 } from '../globals/protos/core';
 
@@ -24,5 +26,15 @@ export class CourseController {
   @GrpcMethod('CoursesService', 'Delete')
   delete(deleteCourseDto: DeleteCourseDto) {
     return this.courseService.delete(deleteCourseDto);
+  }
+
+  @GrpcMethod('CoursesService', 'GetById')
+  getById(getByIdDto: GetByIdDto) {
+    return this.courseService.getById(getByIdDto);
+  }
+
+  @GrpcMethod('CoursesService', 'GetAll')
+  getAll(getAllDto: GetAllDto) {
+    return this.courseService.getAll(getAllDto);
   }
 }
