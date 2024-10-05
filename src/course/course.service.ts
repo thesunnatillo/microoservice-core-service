@@ -4,9 +4,9 @@ import {
   CreateCourseRes,
   DeleteCourseDto,
   DeleteCourseRes,
-  GetAllDto, GetAllRes,
+  GetAllDto,
+  GetAllRes,
   GetByIdDto,
-  GetByIdRes,
   UpdateCourseDto,
   UpdateCourseRes,
 } from '../globals/protos/core';
