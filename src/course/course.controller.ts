@@ -7,7 +7,7 @@ import {
   GetAllDto,
   GetByIdDto,
   UpdateCourseDto,
-} from '../globals/protos/core';
+} from '../global/protos/core';
 
 @Controller()
 export class CourseController {
@@ -34,7 +34,7 @@ export class CourseController {
   }
 
   @GrpcMethod('CoursesService', 'GetAll')
-  getAll(getAllDto: GetAllDto) {
-    return this.courseService.getAll(getAllDto);
+  getAll() {
+    return this.courseService.getAll();
   }
 }

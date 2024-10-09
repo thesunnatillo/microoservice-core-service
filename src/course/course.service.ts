@@ -9,7 +9,7 @@ import {
   GetByIdDto,
   UpdateCourseDto,
   UpdateCourseRes,
-} from '../globals/protos/core';
+} from '../global/protos/core';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Course } from './course.entity';
@@ -83,16 +83,14 @@ export class CourseService {
       return { message: err };
     }
   }
-  async getAll(getAllDto: GetAllDto): Promise<GetAllRes> {
+  async getAll(): Promise<GetAllRes> {
     try {
-      console.log(getAllDto);
       const courses = await this.courseRepo.find();
-      console.log(courses);
       return {
         courses: courses,
       };
     } catch (err) {
-      return { message: err };
+      return { message: err, courses: null };
       // console.log(err);
     }
   }
