@@ -1,5 +1,3 @@
-// typeOrm.config.ts
-
 import { DataSource } from "typeorm";
 import { Course } from './src/course/course.entity';
 

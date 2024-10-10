@@ -4,7 +4,6 @@ import {
   CreateCourseRes,
   DeleteCourseDto,
   DeleteCourseRes,
-  GetAllDto,
   GetAllRes,
   GetByIdDto,
   UpdateCourseDto,
