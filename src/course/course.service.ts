@@ -8,16 +8,18 @@ import {
   GetByIdDto,
   UpdateCourseDto,
   UpdateCourseRes,
-} from '../global/protos/core';
+} from '@global/protos/core';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Course } from './course.entity';
+import { Course } from '@course/entitys/course.entity';
+import { RabbitMQService } from '@rmq/rabbitmq.service';
 
 @Injectable()
 export class CourseService {
   constructor(
     @InjectRepository(Course)
     private readonly courseRepo: Repository<Course>,
+    private readonly rmqService: RabbitMQService,
   ) {}
   async create(createCourseDto: CreateCourseDto): Promise<CreateCourseRes> {
     try {
@@ -26,6 +28,7 @@ export class CourseService {
       };
 
       const course = await this.courseRepo.save(newCourse);
+
       return {
         id: course.id,
         title: course.title,
@@ -34,6 +37,7 @@ export class CourseService {
         message: 'Course created successfully.',
       };
     } catch (err) {
+      await this.rmqService.sendMessageToRabbit(err);
       return { message: err, id: null, title: null, desc: null, price: null };
     }
   }
@@ -49,6 +53,7 @@ export class CourseService {
         message: 'Course updated successfully.',
       };
     } catch (err) {
+      await this.rmqService.sendMessageToRabbit(err);
       return { message: err, title: null, desc: null, price: null };
     }
   }
@@ -63,6 +68,7 @@ export class CourseService {
       await this.courseRepo.delete({ id: deleteCourseDto.id });
       return { message: 'Deleted' };
     } catch (err) {
+      await this.rmqService.sendMessageToRabbit(err);
       return { message: err };
     }
   }
@@ -90,7 +96,6 @@ export class CourseService {
       };
     } catch (err) {
       return { message: err, courses: null };
-      // console.log(err);
     }
   }
 }

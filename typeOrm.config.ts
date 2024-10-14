@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Course } from './src/course/course.entity';
+import { Course } from './src/course/entitys/course.entity';
 
 export default new DataSource({
   type: 'postgres',

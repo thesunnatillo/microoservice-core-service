@@ -1,13 +1,12 @@
 import { Controller } from '@nestjs/common';
-import { CourseService } from './course.service';
+import { CourseService } from '@course/course.service';
 import { GrpcMethod } from '@nestjs/microservices';
 import {
   CreateCourseDto,
   DeleteCourseDto,
-  GetAllDto,
   GetByIdDto,
   UpdateCourseDto,
-} from '../global/protos/core';
+} from '@global/protos/core';
 
 @Controller()
 export class CourseController {
