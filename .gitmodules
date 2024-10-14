@@ -1,0 +1,3 @@
+[submodule "src/global_4_core"]
+	path = src/global_4_core
+	url = https://github.com/thesunnatillo/microoservice-globals-folder.git
