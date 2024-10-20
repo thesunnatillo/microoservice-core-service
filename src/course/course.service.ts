@@ -8,7 +8,7 @@ import {
   GetByIdDto,
   UpdateCourseDto,
   UpdateCourseRes,
-} from '@global/protos/core';
+} from '../global_4_core/protos/core';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Course } from '@course/entitys/course.entity';

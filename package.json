@@ -8,7 +8,7 @@
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc && npm run copy-proto",
-    "copy-proto": "copyfiles -u 1 \"./src/globals/protos/*.proto\" dist/",
+    "copy-proto": "copyfiles -u 1 \"./src/global_4_core/protos/*.proto\" dist/",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -21,6 +21,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "ts-node ./node_modules/typeorm/cli",
+    "typeorm:generate-migration": "ts-node ./node_modules/typeorm/cli migration:generate -d ./typeOrm.config.ts",
     "typeorm:create-migration": "ts-node ./node_modules/typeorm/cli migration:create",
     "typeorm:run-migrations": "npm run typeorm migration:run -- -d ./typeOrm.config.ts",
     "typeorm:revert-migrations": "npm run typeorm migration:revert -- -d ./typeOrm.config.ts"

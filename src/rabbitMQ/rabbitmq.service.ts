@@ -10,8 +10,8 @@ import { ConfigService } from '@nestjs/config';
 @Controller()
 export class RabbitMQService {
   private client: ClientProxy;
-  private configService: ConfigService;
-  constructor() {
+
+  constructor(private readonly configService: ConfigService) {
     this.client = ClientProxyFactory.create({
       transport: Transport.RMQ,
       options: {

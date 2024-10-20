@@ -6,7 +6,7 @@ import {
   DeleteCourseDto,
   GetByIdDto,
   UpdateCourseDto,
-} from '@global/protos/core';
+} from '../global_4_core/protos/core';
 
 @Controller()
 export class CourseController {

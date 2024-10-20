@@ -9,9 +9,9 @@
     "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist/",
+    "baseUrl": "./",
     "paths": {
       "@course/*": ["src/course/*"],
-      "@global/*": ["src/global/*"],
       "@rmq/*": ["src/rabbitMQ/*"]
     },
     "incremental": true,
